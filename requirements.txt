@@ -1,0 +1,16 @@
+bcrypt
+dateparser
+Flask
+flask_cors
+flask-login
+flask_sqlalchemy
+flask_script
+gspread
+inflect
+oauth2client
+Pillow
+pytest
+PostgreSQL-Audit
+psycopg2-binary
+requests
+simplejson
