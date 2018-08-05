@@ -1,0 +1,14 @@
+[
+  {
+    "publicName": "Test User Admin 1",
+    "email": "mptest.admin.1@music-pattern.org",
+    "password": "mptestadmin1",
+    "role": "admin"
+  },
+  {
+    "publicName": "Test User Admin 2",
+    "email": "mptest.admin.2@music-pattern.org",
+    "password": "mptestadmin2",
+    "role": "admin"
+  },
+]
