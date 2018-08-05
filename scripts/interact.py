@@ -18,3 +18,4 @@ from sqlalchemy import *
 from utils.credentials import *
 from utils.human_ids import *
 from utils.includes import *
+from utils.scales import *
