@@ -6,7 +6,8 @@ from os import path
 from pathlib import Path
 from pprint import pprint
 
-from models import Role, User
+from models import Pitch, Role, Scale, ScalePitch, User
+from utils.harmony import PITCHES_LENGTH
 from utils.mock import set_from_mock
 
 def do_sandbox():
@@ -31,3 +32,12 @@ def do_sandbox():
                     role.check_and_save_itself()
                     print("CREATED role")
                     pprint(vars(role))
+
+    #PITCH
+    for index in range(PITCHES_LENGTH):
+        query = Pitch.query.filter_by(index=index)
+        if query.count() == 0:
+            pitch = Pitch(from_dict={ "index": index })
+            pitch.check_and_save_itself()
+            print("CREATED pitch")
+            pprint(vars(pitch))
