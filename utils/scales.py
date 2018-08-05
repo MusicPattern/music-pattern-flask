@@ -8,5 +8,5 @@ def get_scale_note_indexes_combinations(scale_size = 3, harmony_name="chromatic"
 
     return [
         tuple([0] + list(c))
-        for c in combinations(range(1, harmony.notesMaxLength), scale_size - 1)
+        for c in combinations(range(1, harmony.notesMax), scale_size - 1)
     ]

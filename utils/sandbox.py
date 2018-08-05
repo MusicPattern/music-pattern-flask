@@ -54,7 +54,7 @@ def do_sandbox():
 
             #NOTE
             notes = []
-            for note_index in range(harmony.notesMaxLength):
+            for note_index in range(harmony.notesMax):
                 query = Note.query.filter_by(index=note_index)
                 if query.count() == 0:
                     note = Note(from_dict={ "index": note_index })
@@ -67,7 +67,7 @@ def do_sandbox():
 
             #PITCH
             note_index=0
-            for index in range(harmony.pitchesMaxLength):
+            for index in range(harmony.pitchesMax):
                 query = Pitch.query.filter_by(index=index)
                 if query.count() == 0:
                     pitch = Pitch(from_dict={ "index": index })
@@ -76,29 +76,33 @@ def do_sandbox():
                     print("CREATED pitch")
                     pprint(vars(pitch))
                 note_index+=1
-                if note_index == harmony.notesMaxLength:
+                if note_index == harmony.notesMax:
                     note_index = 0
 
             #SCALE
-            scale_note_indexes_combinations = get_scale_note_indexes_combinations(7, harmony.name)
-            scale_note_indexes_combinations_length = str(len(scale_note_indexes_combinations))
-            for (scale_index, scale_note_indexes) in enumerate(scale_note_indexes_combinations):
-                query = Scale.query.filter_by(
-                    combinationIndex=scale_index,
-                    harmonyId=harmony.id
-                )
-                if query.count() == 0:
-                    scale = Scale()
-                    scale.combinationIndex = scale_index
-                    scale.harmony = harmony
-                    scale.check_and_save_itself()
-                    print("CREATED scale " + str(scale_index) + " / " + scale_note_indexes_combinations_length)
-                    #pprint(vars(scale))
-                    for scale_note_index in scale_note_indexes:
-                        note = notes[scale_note_index]
-                        scale_note = ScaleNote()
-                        scale_note.scale = scale
-                        scale_note.note = note
-                        scale_note.check_and_save_itself()
-                        #print("CREATED scale_note")
-                        #pprint(vars(scale_note))
+            for scaleSize in range(1, harmony.scaleMaxSize):
+                print("scaleSize", scaleSize)
+                scale_note_indexes_combinations = get_scale_note_indexes_combinations(scaleSize, harmony.name)
+                scale_note_indexes_combinations_length = str(len(scale_note_indexes_combinations))
+                for (scale_index, scale_note_indexes) in enumerate(scale_note_indexes_combinations):
+                    query = Scale.query.filter_by(
+                        combinationIndex=scale_index,
+                        harmonyId=harmony.id,
+                        size=scaleSize
+                    )
+                    if query.count() == 0:
+                        scale = Scale()
+                        scale.combinationIndex = scale_index
+                        scale.harmony = harmony
+                        scale.size = scaleSize
+                        scale.check_and_save_itself()
+                        print("CREATED scale " + str(scale_index) + " / " + scale_note_indexes_combinations_length + "(" + str(scaleSize) + ")")
+                        #pprint(vars(scale))
+                        for scale_note_index in scale_note_indexes:
+                            note = notes[scale_note_index]
+                            scale_note = ScaleNote()
+                            scale_note.scale = scale
+                            scale_note.note = note
+                            scale_note.check_and_save_itself()
+                            #print("CREATED scale_note")
+                            #pprint(vars(scale_note))

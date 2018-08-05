@@ -12,8 +12,8 @@ class Harmony(Wrapper,
 
     name = Column(String(30))
 
-    notesMaxLength = Column(BigInteger())
+    notesMax = Column(BigInteger())
 
-    pitchesMaxLength = Column(BigInteger())
+    pitchesMax = Column(BigInteger())
 
-    scalesMaxLength = Column(BigInteger())
+    scaleMaxSize = Column(BigInteger())
