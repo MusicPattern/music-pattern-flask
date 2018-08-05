@@ -1,13 +1,13 @@
 """ scale """
-from sqlalchemy import Column, String
-from sqlalchemy.orm import relationship
+from sqlalchemy import BigInteger, Column, String
 
 from models.db import Model
 from models.wrapper import Wrapper
 
 
 class Scale(Wrapper,
-            Model,
-            ):
+            Model):
 
-    name = Column(String(30), nullable=False)
+    name = Column(String(30))
+
+    size = Column(BigInteger())

@@ -1,0 +1,8 @@
+[
+  {
+      "name": "chromatic",
+      "notesMaxLength": 12,
+      "pitchesMaxLength": 200,
+      "scalesMaxLength": 8
+  }
+]

@@ -1,6 +1,8 @@
 """ pitch """
 from sqlalchemy import BigInteger,\
-                       Column
+                       Column,\
+                       ForeignKey
+from sqlalchemy.orm import relationship
 
 from models.db import Model
 from models.wrapper import Wrapper
@@ -11,3 +13,11 @@ class Pitch(Wrapper,
 
     index = Column(BigInteger,
                    unique=True)
+
+    noteId = Column(BigInteger,
+                    ForeignKey("note.id"),
+                    nullable=True)
+
+    note = relationship('Note',
+                        foreign_keys=[noteId],
+                        backref='pitches')
