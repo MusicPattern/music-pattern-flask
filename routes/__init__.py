@@ -1,3 +1,4 @@
+import routes.harmonies
 import routes.users
 
 import routes.storage
