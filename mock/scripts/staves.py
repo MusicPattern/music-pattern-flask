@@ -1,5 +1,5 @@
 """ staves """
-stave_mocks = [
+staff_mocks = [
     {
         "clef": "treble",
         "positionIndex": 0,

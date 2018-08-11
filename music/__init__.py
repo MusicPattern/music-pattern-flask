@@ -1,1 +1,1 @@
-import chromatic_scales
+import music.chromatic_scale
