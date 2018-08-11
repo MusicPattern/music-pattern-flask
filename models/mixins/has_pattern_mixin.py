@@ -1,15 +1,8 @@
-""" scale """
-from sqlalchemy import BigInteger, Column, ForeignKey, String
-from sqlalchemy.dialects.postgresql import ARRAY
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column,\
+                       ForeignKey,\
+                       String
 
-from models.utils import Model, Wrapper
-
-
-class Scale(Wrapper,
-            Model):
-
-    combinationIndex = Column(BigInteger())
+class HasPatternMixin(object):
 
     harmonyId = Column(BigInteger,
                        ForeignKey("harmony.id"),
@@ -20,6 +13,8 @@ class Scale(Wrapper,
                            backref='scales')
 
     name = Column(String(30))
+
+    pattern = Column(String(30))
 
     size = Column(BigInteger())
 

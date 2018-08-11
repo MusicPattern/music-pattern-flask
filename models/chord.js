@@ -1,15 +1,16 @@
-""" scale """
-from sqlalchemy import BigInteger, Column, ForeignKey, String
-from sqlalchemy.dialects.postgresql import ARRAY
-from sqlalchemy.orm import relationship
+""" chord """
+from sqlalchemy import BigInteger,\
+                       Column,\
+                       ForeignKey,\
+                       String
 
 from models.utils import Model, Wrapper
 
 
-class Scale(Wrapper,
+class Chord(Wrapper,
             Model):
 
-    combinationIndex = Column(BigInteger())
+    name = Column(String(30))
 
     harmonyId = Column(BigInteger,
                        ForeignKey("harmony.id"),
@@ -17,11 +18,8 @@ class Scale(Wrapper,
 
     harmony = relationship('Harmony',
                            foreign_keys=[harmonyId],
-                           backref='scales')
+                           backref='chords')
 
-    name = Column(String(30))
-
-    size = Column(BigInteger())
 
     tags = Column(ARRAY(String(220)),
                   nullable=False,

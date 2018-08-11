@@ -1,4 +1,5 @@
-""" note """
+""" staff """
+from itertools import combinations
 from sqlalchemy import BigInteger,\
                        Column,\
                        String
@@ -6,10 +7,11 @@ from sqlalchemy import BigInteger,\
 from models.utils import Model, Wrapper
 
 
-class Note(Wrapper,
-           Model):
+class Staff(Wrapper,
+             Model):
 
     name = Column(String(30))
 
-    index = Column(BigInteger,
-                   unique=True)
+    clef = Column(BigInteger())
+
+    keySignature = Column(BigInteger())

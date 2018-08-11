@@ -4,11 +4,9 @@ from sqlalchemy.sql.expression import cast
 from sqlalchemy.sql.functions import coalesce
 import bcrypt
 
-from models.db import Model
-from models.has_thumb_mixin import HasThumbMixin
-from models.needs_validation_mixin import NeedsValidationMixin
-from models.role import Role
-from models.wrapper import Wrapper
+from models.utils import db,Model,Wrapper
+from models.mixin import HasThumbMixin, NeedsValidationMixin
+from models import Role
 from utils.search import create_tsvector
 
 class User(Wrapper,

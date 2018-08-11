@@ -6,8 +6,7 @@ from sqlalchemy import BigInteger,\
                        String
 from sqlalchemy.orm import relationship
 
-from models.db import Model
-from models.wrapper import Wrapper
+from models.utils import Model, Wrapper
 
 class RoleType(enum.Enum):
     admin = "admin"

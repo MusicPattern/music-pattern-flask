@@ -1,20 +1,20 @@
-""" scale note """
+""" chord note """
 from sqlalchemy import BigInteger, Column, ForeignKey
 from sqlalchemy.orm import backref, relationship
 
 from models.utils import Model, Wrapper
 
 
-class ScaleNote(Wrapper,
+class ChordNote(Wrapper,
                 Model):
 
-    scaleId = Column(BigInteger,
-                     ForeignKey('scale.id'),
+    chordId = Column(BigInteger,
+                     ForeignKey('chord.id'),
                      primary_key=True)
 
-    scale = relationship('Scale',
-                         foreign_keys=[scaleId],
-                         backref=backref("scaleNotes"))
+    chord = relationship('Chord',
+                         foreign_keys=[chordId],
+                         backref="chordNotes")
 
     noteId = Column(BigInteger,
                     ForeignKey('note.id'),
@@ -22,4 +22,4 @@ class ScaleNote(Wrapper,
 
     note = relationship('Note',
                         foreign_keys=[noteId],
-                        backref=backref("scaleNotes"))
+                        backref="chordNotes")
