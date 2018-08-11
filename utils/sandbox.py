@@ -91,8 +91,8 @@ def do_sandbox():
                 note_index = 0
 
         #SCALE
-        """
-        for scaleSize in range(1, harmony.scaleMaxSize):
+        #for scaleSize in range(1, harmony.scaleMaxSize):
+        for scaleSize in []:
             scale_note_indexes_combinations = harmony.get_scale_note_indexes_combinations(scaleSize)
             scale_note_indexes_combinations_length = str(len(scale_note_indexes_combinations))
             for (scale_index, scale_note_indexes) in enumerate(scale_note_indexes_combinations):
@@ -119,7 +119,6 @@ def do_sandbox():
                         Wrapper.check_and_save(scale_note)
                         #print("CREATED scale_note")
                         #pprint(vars(scale_note))
-        """
 
         #MELODY
         melodies = []
@@ -128,6 +127,8 @@ def do_sandbox():
             if query.count() == 0:
                 melody = Melody(from_dict=melody_mock)
                 Wrapper.check_and_save(melody)
+                print("CREATED melody")
+                pprint(vars(melody))
             else:
                 melody = query.first()
             melodies.append(melody)
@@ -139,6 +140,8 @@ def do_sandbox():
             if query.count() == 0:
                 rhythm = Rhythm(from_dict=rhythm_mock)
                 Wrapper.check_and_save(rhythm)
+                print("CREATED rhythm")
+                pprint(vars(rhythm))
             else:
                 rhythm = query.first()
             rhythms.append(rhythm)
@@ -154,6 +157,8 @@ def do_sandbox():
             if query.count() == 0:
                 voice = Voice(from_dict=voice_mock)
                 Wrapper.check_and_save(voice)
+                print("CREATED voice")
+                pprint(vars(voice))
             else:
                 voice = query.first()
             voices.append(voice)
@@ -165,6 +170,8 @@ def do_sandbox():
             if query.count() == 0:
                 score = Score(from_dict=score_mock)
                 Wrapper.check_and_save(score)
+                print("CREATED score")
+                pprint(vars(score))
             else:
                 score = query.first()
             scores.append(score)
@@ -183,6 +190,8 @@ def do_sandbox():
                 staff = Staff(from_dict=staff_mock)
                 staff.score = score
                 Wrapper.check_and_save(staff)
+                print("CREATED staff")
+                pprint(vars(staff))
             else:
                 staff = query.first()
             staves.append(staff)
