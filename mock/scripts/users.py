@@ -1,5 +1,5 @@
 """ users """
-users = [
+user_mocks = [
     {
         "publicName": "Test User Admin 1",
         "email": "mptest.admin.1@musicpattern.org",

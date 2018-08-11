@@ -3,14 +3,28 @@
 # -*- coding: utf-8 -*-
 from pprint import pprint
 
-from mock.scripts import harmonies, users
+from mock.scripts import harmony_mocks,\
+                         melody_mocks,\
+                         score_mocks,\
+                         staff_mocks,\
+                         staff_voice_mocks,\
+                         rhythm_mocks,\
+                         user_mocks,\
+                         voice_mocks
+from models.utils import Wrapper
 from models import Harmony,\
+                   Melody,\
                    Note,\
                    Pitch,\
+                   Rhythm,\
                    Role,\
                    Scale,\
                    ScaleNote,\
-                   User
+                   Score,\
+                   Staff,\
+                   StaffVoice,\
+                   User,\
+                   Voice
 
 from utils.mock import set_from_mock
 
@@ -18,30 +32,30 @@ from utils.mock import set_from_mock
 def do_sandbox():
 
     #USER
-    for (user_index, user_dict) in enumerate(users):
-        query = User.query.filter_by(email=user_dict['email'])
+    for (user_index, user_mock) in enumerate(user_mocks):
+        query = User.query.filter_by(email=user_mock['email'])
         if query.count() == 0:
-            user = User(from_dict=user_dict)
+            user = User(from_dict=user_mock)
             user.validationToken = None
-            user.check_and_save_itself()
+            Wrapper.check_and_save(user)
             set_from_mock("thumbs", user, user_index + 1)
             print("CREATED user")
             pprint(vars(user))
 
-            if 'role' in user_dict:
+            if 'role' in user_mock:
                 role = Role()
-                role.type = user_dict['role']
+                role.type = user_mock['role']
                 role.user = user
-                role.check_and_save_itself()
+                Wrapper.check_and_save(role)
                 print("CREATED role")
                 pprint(vars(role))
 
     #HARMONY
-    for (harmony_index, harmony_dict) in enumerate(harmonies):
-        query = Harmony.query.filter_by(name=harmony_dict['name'])
+    for (harmony_index, harmony_mock) in enumerate(harmony_mocks):
+        query = Harmony.query.filter_by(name=harmony_mock['name'])
         if query.count() == 0:
-            harmony = Harmony(from_dict=harmony_dict)
-            harmony.check_and_save_itself()
+            harmony = Harmony(from_dict=harmony_mock)
+            Wrapper.check_and_save(harmony)
             print("CREATED harmony")
             pprint(vars(harmony))
         else:
@@ -53,9 +67,9 @@ def do_sandbox():
             query = Note.query.filter_by(index=note_index)
             if query.count() == 0:
                 note = Note(from_dict={ "index": note_index })
-                if "noteNames" in harmony_dict and note_index in harmony_dict['noteNames']:
-                    note.name = harmony_dict['noteNames'][note_index]
-                note.check_and_save_itself()
+                if "noteNames" in harmony_mock and note_index in harmony_mock['noteNames']:
+                    note.name = harmony_mock['noteNames'][note_index]
+                Wrapper.check_and_save(note)
                 print("CREATED note")
                 pprint(vars(note))
             else:
@@ -63,13 +77,13 @@ def do_sandbox():
             notes.append(note)
 
         #PITCH
-        note_index=0
+        note_index = 0
         for index in range(harmony.pitchesMax):
             query = Pitch.query.filter_by(index=index)
             if query.count() == 0:
                 pitch = Pitch(from_dict={ "index": index })
                 pitch.note = notes[note_index]
-                pitch.check_and_save_itself()
+                Wrapper.check_and_save(pitch)
                 print("CREATED pitch")
                 pprint(vars(pitch))
             note_index+=1
@@ -77,6 +91,7 @@ def do_sandbox():
                 note_index = 0
 
         #SCALE
+        """
         for scaleSize in range(1, harmony.scaleMaxSize):
             scale_note_indexes_combinations = harmony.get_scale_note_indexes_combinations(scaleSize)
             scale_note_indexes_combinations_length = str(len(scale_note_indexes_combinations))
@@ -90,10 +105,10 @@ def do_sandbox():
                     scale = Scale()
                     scale.combinationIndex = scale_index
                     scale.harmony = harmony
-                    scale.name = harmony_dict['get_scale_name'](scale_note_indexes)
-                    scale.tags = harmony_dict['get_scale_tags'](scale_note_indexes)
+                    scale.name = harmony_mock['get_scale_name'](scale_note_indexes)
+                    scale.tags = harmony_mock['get_scale_tags'](scale_note_indexes)
                     scale.size = scaleSize
-                    scale.check_and_save_itself()
+                    Wrapper.check_and_save(scale)
                     print("CREATED scale " + str(scale_index) + " / " + scale_note_indexes_combinations_length + "(" + str(scaleSize) + ")")
                     #pprint(vars(scale))
                     for scale_note_index in scale_note_indexes:
@@ -101,6 +116,73 @@ def do_sandbox():
                         scale_note = ScaleNote()
                         scale_note.scale = scale
                         scale_note.note = note
-                        scale_note.check_and_save_itself()
+                        Wrapper.check_and_save(scale_note)
                         #print("CREATED scale_note")
                         #pprint(vars(scale_note))
+        """
+
+        #MELODY
+        melodies = []
+        for melody_mock in melody_mocks:
+            query = Melody.query.filter_by(pattern=melody_mock['pattern'])
+            if query.count() == 0:
+                melody = Melody(from_dict=melody_mock)
+                Wrapper.check_and_save(melody)
+            else:
+                melody = query.first()
+            melodies.append(melody)
+
+        #RHYTHM
+        rhythms = []
+        for rhythm_mock in rhythm_mocks:
+            query = Rhythm.query.filter_by(pattern=rhythm_mock['pattern'])
+            if query.count() == 0:
+                rhythm = Rhythm(from_dict=rhythm_mock)
+                Wrapper.check_and_save(rhythm)
+            else:
+                rhythm = query.first()
+            rhythms.append(rhythm)
+
+        #VOICE
+        voices = []
+        for voice_mock in voice_mocks:
+
+            melody = melodies[voice_mock['melodyIndex']]
+            rhythm = rhythms[voice_mock['rhythmIndex']]
+
+            query = Voice.query.filter_by(melodyId=melody.id, rhythmId=rhythm.id)
+            if query.count() == 0:
+                voice = Voice(from_dict=voice_mock)
+                Wrapper.check_and_save(voice)
+            else:
+                voice = query.first()
+            voices.append(voice)
+
+        #SCORE
+        scores = []
+        for score_mock in score_mocks:
+            query = Score.query.filter_by(name=score_mock['name'])
+            if query.count() == 0:
+                score = Score(from_dict=score_mock)
+                Wrapper.check_and_save(score)
+            else:
+                score = query.first()
+            scores.append(score)
+
+        #STAFF
+        staves = []
+        for staff_mock in staff_mocks:
+
+            score = scores[staff_mock['scoreIndex']]
+
+            query = Staff.query.filter_by(
+                positionIndex=staff_mock['positionIndex'],
+                scoreId=score.id
+            )
+            if query.count() == 0:
+                staff = Staff(from_dict=staff_mock)
+                staff.score = score
+                Wrapper.check_and_save(staff)
+            else:
+                staff = query.first()
+            staves.append(staff)

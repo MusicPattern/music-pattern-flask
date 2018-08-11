@@ -12,6 +12,7 @@ from models.scale_note import ScaleNote
 from models.scale import Scale
 from models.score import Score
 from models.staff import Staff
+from models.staff_voice import StaffVoice
 from models.user import User
 from models.voice import Voice
 
@@ -29,7 +30,9 @@ __all__ = (
     'Role',
     'Scale',
     'ScaleNote',
+    'Score',
     'Staff',
+    'StaffVoice',
     'User',
     'Voice'
 )

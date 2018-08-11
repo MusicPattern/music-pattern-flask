@@ -1,7 +1,7 @@
 """ harmonies """
 from music.chromatic_scales import get_chromatic_scale_name, get_chromatic_scale_tags
 
-harmonies = [
+harmony_mocks = [
     {
         "get_scale_name": get_chromatic_scale_name,
         "get_scale_tags": get_chromatic_scale_tags,
