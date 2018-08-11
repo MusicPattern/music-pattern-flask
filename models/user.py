@@ -4,8 +4,8 @@ from sqlalchemy.sql.expression import cast
 from sqlalchemy.sql.functions import coalesce
 import bcrypt
 
+from models.mixins import HasThumbMixin, NeedsValidationMixin
 from models.utils import db,Model,Wrapper
-from models.mixin import HasThumbMixin, NeedsValidationMixin
 from models import Role
 from utils.search import create_tsvector
 

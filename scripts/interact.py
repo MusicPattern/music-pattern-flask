@@ -2,7 +2,7 @@
 import os
 from flask import Flask
 
-from models.db import db
+from models.utils import db
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET', '+%+3Q23!zbc+!Dd@')

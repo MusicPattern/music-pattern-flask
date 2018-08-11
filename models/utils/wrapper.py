@@ -15,8 +15,7 @@ from sqlalchemy import CHAR,\
                        String
 from sqlalchemy.orm.collections import InstrumentedList
 
-from models.api_errors import ApiErrors
-from models.db import db
+from models.utils import ApiErrors, db
 from utils.human_ids import dehumanize, humanize
 
 

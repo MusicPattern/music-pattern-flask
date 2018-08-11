@@ -5,7 +5,7 @@ from sqlalchemy.exc import IntegrityError
 import traceback
 from flask import current_app as app, jsonify
 
-from models.api_errors import ApiErrors
+from models.utils import ApiErrors
 
 
 @app.errorhandler(ApiErrors)

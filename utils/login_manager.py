@@ -2,12 +2,12 @@
 from flask_login import LoginManager
 from flask import current_app as app, jsonify
 
-from models.api_errors import ApiErrors
-from models.user import User
+from models.utils import ApiErrors
+from models import User
 from utils.credentials import get_user_with_credentials
 
-app.login_manager = LoginManager()
-app.login_manager.init_app(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 app.config['REMEMBER_COOKIE_DURATION'] = 365 * 24 * 3600
 

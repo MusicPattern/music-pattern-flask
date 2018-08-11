@@ -1,8 +1,8 @@
 """ credentials """
 from flask_login import login_user
 
-from models.api_errors import ApiErrors
-from models.user import User
+from models.utils import ApiErrors
+from models import User
 
 def get_user_with_credentials(identifier, password):
     errors = ApiErrors()

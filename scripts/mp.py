@@ -3,7 +3,7 @@ import os
 from flask import Flask
 from flask_script import Manager
 
-from models.db import db
+from models.utils import db
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')

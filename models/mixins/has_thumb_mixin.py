@@ -5,7 +5,7 @@ import requests
 from sqlalchemy import Column,\
                        Integer
 
-from models.wrapper import Wrapper
+from models.utils import Wrapper
 from utils.human_ids import humanize
 from utils.inflect import inflect_engine
 from utils.object_storage import delete_public_object,\

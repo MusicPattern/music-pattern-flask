@@ -5,7 +5,8 @@ from sqlalchemy.sql.expression import and_
 from flask import current_app as app, jsonify, request
 import gspread
 
-from models import Role, User, Wrapper
+from models.utils import Wrapper
+from models import Role, User 
 from utils.credentials import get_user_with_credentials
 from utils.includes import USER_INCLUDES
 from utils.rest import expect_json_data,\

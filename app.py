@@ -3,7 +3,7 @@ import os
 from flask_cors import CORS
 from flask import Flask
 
-from models.db import db
+from models.utils import db, install
 from utils.config import IS_DEV
 
 app = Flask(__name__, static_url_path='/static')
@@ -22,9 +22,8 @@ cors = CORS(app,
 app.url_map.strict_slashes = False
 
 with app.app_context():
-    import models.install
+    install()
     import utils.login_manager
-    import utils.logger
     import routes
 
 if __name__ == '__main__':
