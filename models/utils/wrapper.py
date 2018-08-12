@@ -67,7 +67,7 @@ class Wrapper():
                         value = value[:options['cut']] + '...'
             if key == 'id' or key.endswith('Id'):
                 result[key] = humanize(value)
-                result['dehumanized' + key[0].capitalize() + key[1:]] = value
+                #result['dehumanized' + key[0].capitalize() + key[1:]] = value
             elif key == 'validationToken':
                 continue
             elif key == 'firstThumbDominantColor' and value:

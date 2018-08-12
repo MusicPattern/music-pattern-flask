@@ -14,7 +14,7 @@ class ScoreStaff(Wrapper,
                      ForeignKey('score.id'),
                      primary_key=True)
 
-    score = relationship('Staff',
+    score = relationship('Score',
                          foreign_keys=[scoreId],
                          backref=backref("scoreStaves"))
 

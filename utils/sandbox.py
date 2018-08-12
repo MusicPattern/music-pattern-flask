@@ -26,6 +26,7 @@ from models import Bar,\
                    Scale,\
                    ScaleNote,\
                    Score,\
+                   ScoreStaff,\
                    Staff,\
                    StaffBar,\
                    User,\
@@ -174,8 +175,7 @@ def do_sandbox():
         staves = []
         for staff_mock in staff_mocks:
             query = Staff.query.filter_by(
-                positionIndex=staff_mock['positionIndex'],
-                scoreId=score.id
+                name=staff_mock['name']
             )
             if query.count() == 0:
                 staff = Staff(from_dict=staff_mock)
@@ -190,13 +190,15 @@ def do_sandbox():
         for score_staff_mock in score_staff_mocks:
             score = scores[score_staff_mock['scoreIndex']]
             staff = staves[score_staff_mock['staffIndex']]
-            query = Staff.query.filter_by(
+            query = ScoreStaff.query.filter_by(
                 positionIndex=score_staff_mock['positionIndex'],
                 scoreId=score.id,
                 staffId=staff.id
             )
             if query.count() == 0:
                 score_staff = ScoreStaff(from_dict=score_staff_mock)
+                score_staff.score = score
+                score_staff.staff = staff
                 Wrapper.check_and_save(score_staff)
                 print("CREATED score_staff")
                 pprint(vars(score_staff))
@@ -204,20 +206,32 @@ def do_sandbox():
         #BAR
         bars = []
         for bar_mock in bar_mocks:
-            staff = staves[bar_mock['staffIndex']]
-            query = Bar.query.filter_by(
-                positionIndex=bar_mock['positionIndex'],
-                staffId=staff.id
-            )
+            query = Bar.query.filter_by(name=bar_mock['name'])
             if query.count() == 0:
                 bar = Bar(from_dict=bar_mock)
-                bar.staff = staff
                 Wrapper.check_and_save(bar)
                 print("CREATED bar")
                 pprint(vars(bar))
             else:
                 bar = query.first()
             bars.append(bar)
+
+        #STAFF BAR
+        for staff_bar_mock in staff_bar_mocks:
+            staff = staves[staff_bar_mock['staffIndex']]
+            bar = bars[staff_bar_mock['barIndex']]
+            query = StaffBar.query.filter_by(
+                positionIndex=staff_bar_mock['positionIndex'],
+                staffId=staff.id,
+                barId=bar.id
+            )
+            if query.count() == 0:
+                staff_bar = StaffBar(from_dict=staff_bar_mock)
+                staff_bar.staff = staff
+                staff_bar.bar = bar
+                Wrapper.check_and_save(staff_bar)
+                print("CREATED staff_bar")
+                pprint(vars(staff_bar))
 
         #VOICE
         voices = []
@@ -230,6 +244,8 @@ def do_sandbox():
             )
             if query.count() == 0:
                 voice = Voice(from_dict=voice_mock)
+                voice.melody = melody
+                voice.rhythm = rhythm
                 Wrapper.check_and_save(voice)
                 print("CREATED voice")
                 pprint(vars(voice))
@@ -243,12 +259,13 @@ def do_sandbox():
             bar = bars[bar_voice_mock['barIndex']]
             voice = voices[bar_voice_mock['voiceIndex']]
             query = BarVoice.query.filter_by(
-                positionIndex=score_staff_mock['positionIndex'],
                 barId=bar.id,
                 voiceId=voice.id
             )
             if query.count() == 0:
                 bar_voice = BarVoice(from_dict=bar_voice_mock)
+                bar_voice.bar = bar
+                bar_voice.voice = voice
                 Wrapper.check_and_save(bar_voice)
                 print("CREATED bar_voice")
                 pprint(vars(bar_voice))

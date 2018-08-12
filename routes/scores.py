@@ -1,15 +1,18 @@
 """ scores routes """
-from flask_login import login_required
+from flask_login import login_required, current_user
 from flask import current_app as app, jsonify
 
-from models import Score
+from models import RoleType, Score
 from utils.includes import SCORE_INCLUDES
 from utils.rest import load_or_404
 
 @app.route('/scores', methods=['GET'])
-#@login_required
+@login_required
 def get_scores():
-    scores = Score.query.all()
+    query = Score.query
+    if RoleType.admin not in [role.type for role in current_user.roles]:
+        query = query.filter_by(userId=current_user.id)
+    scores = query.all()
     return jsonify([score.asdict(includes=SCORE_INCLUDES)
                     for score in scores]), 200
 

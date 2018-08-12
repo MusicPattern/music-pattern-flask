@@ -8,10 +8,11 @@ from models.melody import Melody
 from models.note import Note
 from models.pitch import Pitch
 from models.rhythm import Rhythm
-from models.role import Role
+from models.role import Role, RoleType
 from models.scale_note import ScaleNote
 from models.scale import Scale
 from models.score import Score
+from models.score_staff import ScoreStaff
 from models.staff import Staff
 from models.staff_bar import StaffBar
 from models.user import User
@@ -30,9 +31,11 @@ __all__ = (
     'Pitch',
     'Rhythm',
     'Role',
+    'RoleType',
     'Scale',
     'ScaleNote',
     'Score',
+    'ScoreStaff',
     'Staff',
     'StaffBar',
     'User',
