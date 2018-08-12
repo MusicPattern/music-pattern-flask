@@ -1,8 +1,8 @@
 """ error handlers """
 import re
+import traceback
 import simplejson as json
 from sqlalchemy.exc import IntegrityError
-import traceback
 from flask import current_app as app, jsonify
 
 from models.utils import ApiErrors

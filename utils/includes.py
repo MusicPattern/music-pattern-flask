@@ -17,3 +17,12 @@ HARMONY_INCLUDES = [
         ]
     }
 ]
+
+SCORE_INCLUDES = [
+    {
+        "key": "staves",
+        "sub_joins": [
+            
+        ]
+    }
+]

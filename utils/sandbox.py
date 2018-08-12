@@ -32,6 +32,7 @@ from utils.mock import set_from_mock
 def do_sandbox():
 
     #USER
+    users = []
     for (user_index, user_mock) in enumerate(user_mocks):
         query = User.query.filter_by(email=user_mock['email'])
         if query.count() == 0:
@@ -49,6 +50,9 @@ def do_sandbox():
                 Wrapper.check_and_save(role)
                 print("CREATED role")
                 pprint(vars(role))
+        else:
+            user = query.first()
+        users.append(user)
 
     #HARMONY
     for (harmony_index, harmony_mock) in enumerate(harmony_mocks):
@@ -169,6 +173,8 @@ def do_sandbox():
             query = Score.query.filter_by(name=score_mock['name'])
             if query.count() == 0:
                 score = Score(from_dict=score_mock)
+                user = users[score_mock['userIndex']]
+                score.user = user
                 Wrapper.check_and_save(score)
                 print("CREATED score")
                 pprint(vars(score))
