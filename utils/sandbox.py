@@ -3,16 +3,21 @@
 # -*- coding: utf-8 -*-
 from pprint import pprint
 
-from mock.scripts import harmony_mocks,\
+from mock.scripts import bar_mocks,\
+                         bar_voice_mocks,\
+                         harmony_mocks,\
                          melody_mocks,\
                          score_mocks,\
+                         score_staff_mocks,\
                          staff_mocks,\
-                         staff_voice_mocks,\
+                         staff_bar_mocks,\
                          rhythm_mocks,\
                          user_mocks,\
                          voice_mocks
 from models.utils import Wrapper
-from models import Harmony,\
+from models import Bar,\
+                   BarVoice,\
+                   Harmony,\
                    Melody,\
                    Note,\
                    Pitch,\
@@ -22,7 +27,7 @@ from models import Harmony,\
                    ScaleNote,\
                    Score,\
                    Staff,\
-                   StaffVoice,\
+                   StaffBar,\
                    User,\
                    Voice
 
@@ -150,23 +155,6 @@ def do_sandbox():
                 rhythm = query.first()
             rhythms.append(rhythm)
 
-        #VOICE
-        voices = []
-        for voice_mock in voice_mocks:
-
-            melody = melodies[voice_mock['melodyIndex']]
-            rhythm = rhythms[voice_mock['rhythmIndex']]
-
-            query = Voice.query.filter_by(melodyId=melody.id, rhythmId=rhythm.id)
-            if query.count() == 0:
-                voice = Voice(from_dict=voice_mock)
-                Wrapper.check_and_save(voice)
-                print("CREATED voice")
-                pprint(vars(voice))
-            else:
-                voice = query.first()
-            voices.append(voice)
-
         #SCORE
         scores = []
         for score_mock in score_mocks:
@@ -185,19 +173,82 @@ def do_sandbox():
         #STAFF
         staves = []
         for staff_mock in staff_mocks:
-
-            score = scores[staff_mock['scoreIndex']]
-
             query = Staff.query.filter_by(
                 positionIndex=staff_mock['positionIndex'],
                 scoreId=score.id
             )
             if query.count() == 0:
                 staff = Staff(from_dict=staff_mock)
-                staff.score = score
                 Wrapper.check_and_save(staff)
                 print("CREATED staff")
                 pprint(vars(staff))
             else:
                 staff = query.first()
             staves.append(staff)
+
+        #SCORE STAFF
+        for score_staff_mock in score_staff_mocks:
+            score = scores[score_staff_mock['scoreIndex']]
+            staff = staves[score_staff_mock['staffIndex']]
+            query = Staff.query.filter_by(
+                positionIndex=score_staff_mock['positionIndex'],
+                scoreId=score.id,
+                staffId=staff.id
+            )
+            if query.count() == 0:
+                score_staff = ScoreStaff(from_dict=score_staff_mock)
+                Wrapper.check_and_save(score_staff)
+                print("CREATED score_staff")
+                pprint(vars(score_staff))
+
+        #BAR
+        bars = []
+        for bar_mock in bar_mocks:
+            staff = staves[bar_mock['staffIndex']]
+            query = Bar.query.filter_by(
+                positionIndex=bar_mock['positionIndex'],
+                staffId=staff.id
+            )
+            if query.count() == 0:
+                bar = Bar(from_dict=bar_mock)
+                bar.staff = staff
+                Wrapper.check_and_save(bar)
+                print("CREATED bar")
+                pprint(vars(bar))
+            else:
+                bar = query.first()
+            bars.append(bar)
+
+        #VOICE
+        voices = []
+        for voice_mock in voice_mocks:
+            melody = melodies[voice_mock['melodyIndex']]
+            rhythm = rhythms[voice_mock['rhythmIndex']]
+            query = Voice.query.filter_by(
+                melodyId=melody.id,
+                rhythmId=rhythm.id
+            )
+            if query.count() == 0:
+                voice = Voice(from_dict=voice_mock)
+                Wrapper.check_and_save(voice)
+                print("CREATED voice")
+                pprint(vars(voice))
+            else:
+                voice = query.first()
+            voices.append(voice)
+
+
+        #BAR VOICE
+        for bar_voice_mock in bar_voice_mocks:
+            bar = bars[bar_voice_mock['barIndex']]
+            voice = voices[bar_voice_mock['voiceIndex']]
+            query = BarVoice.query.filter_by(
+                positionIndex=score_staff_mock['positionIndex'],
+                barId=bar.id,
+                voiceId=voice.id
+            )
+            if query.count() == 0:
+                bar_voice = BarVoice(from_dict=bar_voice_mock)
+                Wrapper.check_and_save(bar_voice)
+                print("CREATED bar_voice")
+                pprint(vars(bar_voice))

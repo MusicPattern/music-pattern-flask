@@ -1,5 +1,6 @@
 """ models """
 from models.bar import Bar
+from models.bar_voice import BarVoice
 from models.chord import Chord
 from models.chord_note import ChordNote
 from models.harmony import Harmony
@@ -12,7 +13,7 @@ from models.scale_note import ScaleNote
 from models.scale import Scale
 from models.score import Score
 from models.staff import Staff
-from models.staff_voice import StaffVoice
+from models.staff_bar import StaffBar
 from models.user import User
 from models.voice import Voice
 
@@ -20,6 +21,7 @@ from models.voice import Voice
 
 __all__ = (
     'Bar',
+    'BarVoice',
     'Chord',
     'ChordNote',
     'Harmony',
@@ -32,7 +34,7 @@ __all__ = (
     'ScaleNote',
     'Score',
     'Staff',
-    'StaffVoice',
+    'StaffBar',
     'User',
     'Voice'
 )

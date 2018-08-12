@@ -8,4 +8,6 @@ from models.utils import Model, Wrapper
 class Rhythm(Wrapper,
              Model):
 
+    name = Column(String(30))
+    
     pattern = Column(String(30))

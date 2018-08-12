@@ -6,7 +6,7 @@ from flask import current_app as app, jsonify, request
 import gspread
 
 from models.utils import Wrapper
-from models import Role, User 
+from models import Role, User
 from utils.credentials import get_user_with_credentials
 from utils.includes import USER_INCLUDES
 from utils.rest import expect_json_data,\
@@ -21,7 +21,7 @@ def make_user_query():
 @app.route("/users/current", methods=["GET"])
 @login_required
 def get_profile():
-    user = current_user.asdict(include=USER_INCLUDES)
+    user = current_user.asdict(includes=USER_INCLUDES)
     return jsonify(user)
 
 

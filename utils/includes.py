@@ -8,11 +8,11 @@ USER_INCLUDES = [
 HARMONY_INCLUDES = [
     {
         "key": "scales",
-        "sub_joins": [
+        "includes": [
             {
                 "key": "scaleNotes",
                 "resolve": lambda scale_note, filters: scale_note['note'],
-                "sub_joins": ["note"]
+                "includes": ["note"]
             }
         ]
     }
@@ -21,8 +21,20 @@ HARMONY_INCLUDES = [
 SCORE_INCLUDES = [
     {
         "key": "staves",
-        "sub_joins": [
-            
+        "includes": [
+            {
+                "key": "staffBars",
+                "resolve": lambda staff_bar, filters: staff_bar['bar'],
+                "includes": [
+                    {
+                        "key": "voices",
+                        "includes": [
+                            "melody",
+                            "rhythm"
+                        ]
+                    }
+                ]
+            }
         ]
     }
 ]

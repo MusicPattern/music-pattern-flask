@@ -9,5 +9,5 @@ from utils.includes import HARMONY_INCLUDES
 #@login_required
 def get_harmonies():
     harmonies = Harmony.query.all()
-    return jsonify([harmony.asdict(include=HARMONY_INCLUDES)
+    return jsonify([harmony.asdict(includes=HARMONY_INCLUDES)
                     for harmony in harmonies]), 200

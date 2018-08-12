@@ -56,9 +56,9 @@ class Wrapper():
         result = OrderedDict()
         for key in self.__mapper__.c.keys():
             if options\
-               and 'include' in options\
-               and options.get('include')\
-               and "-"+key in options['include']:
+               and 'includes' in options\
+               and options.get('includes')\
+               and "-"+key in options['includes']:
                 continue
             value = getattr(self, key)
             if options and options.get('cut'):
@@ -77,9 +77,9 @@ class Wrapper():
         # add the model name
         result['modelName'] = self.__class__.__name__
         if options\
-           and 'include' in options\
-           and options['include']:
-            for join in options['include']:
+           and 'includes' in options\
+           and options['includes']:
+            for join in options['includes']:
                 if isinstance(join, str) and\
                    join.startswith('-'):
                     continue
@@ -87,12 +87,12 @@ class Wrapper():
                     key = join['key']
                     refine = join.get('refine')
                     resolve = join.get('resolve')
-                    sub_joins = join.get('sub_joins')
+                    includes = join.get('includes')
                 else:
                     key = join
                     refine = None
                     resolve = None
-                    sub_joins = None
+                    includes = None
                 try:
                     value = getattr(self, key)
                 except AttributeError:
@@ -111,7 +111,7 @@ class Wrapper():
                             map(
                                 lambda attr: attr.asdict(
                                     cut=options and options.get('cut'),
-                                    include=sub_joins,
+                                    includes=includes,
                                 ),
                                 final_value
                             )
@@ -121,7 +121,7 @@ class Wrapper():
                                                    result[key]))
                     elif isinstance(value, Wrapper):
                         result[key] = value.asdict(
-                            include=sub_joins,
+                            includes=includes,
                             cut=options and options.get('cut'),
                         )
                         if resolve != None:
