@@ -13,14 +13,16 @@ mimes_by_folder = {
 }
 
 
-def set_from_mock(folder, obj, thumb_id):
+def set_from_mock(folder, obj, asset_id):
     dir_path = Path(os.path.dirname(os.path.realpath(__file__)))
     collection_name = inflect_engine.plural(obj.__class__.__name__.lower())
-    thumb_path = dir_path / '..' / 'mock'\
+    asset_path = dir_path / '..' / 'mock'\
                  / folder / collection_name\
-                 / str(thumb_id)
-    with open(thumb_path, mode='rb') as file:
-        if folder == "thumbs":
+                 / str(asset_id)
+    with open(asset_path, mode='rb') as file:
+        if folder == "audios":
+            obj.save_audio(file.read(), 0)
+        elif folder == "thumbs":
             obj.save_thumb(file.read(), 0)
         else:
             store_public_object(folder,

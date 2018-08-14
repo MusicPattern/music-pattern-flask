@@ -13,9 +13,9 @@ db.app = app
 
 # IMPORT A LOT OF TOOLS TO MAKE THEM AVAILABLE
 # IN THE PYTHON SHELL
+from music import *
 from models import *
 from sqlalchemy import *
 from utils.credentials import *
 from utils.human_ids import *
 from utils.includes import *
-from utils.scales import *

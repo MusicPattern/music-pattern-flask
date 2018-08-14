@@ -8,6 +8,8 @@ from models.utils import Model, Wrapper
 class BarVoice(Wrapper,
                Model):
 
+    positionIndex = Column(BigInteger)
+
     barId = Column(BigInteger,
                    ForeignKey('bar.id'),
                    primary_key=True)

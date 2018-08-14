@@ -72,6 +72,6 @@ class HasThumbMixin(object):
                             self.thumb_storage_id(index),
                             thumb,
                             "image/" + (image_type or "jpeg"))
-        self.thumbCount = max(index+1, self.thumbCount or 0)
+        self.thumbCount = max(index + 1, self.thumbCount or 0)
         print(self, self.thumbCount)
         Wrapper.check_and_save(self)
