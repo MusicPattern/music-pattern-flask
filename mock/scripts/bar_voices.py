@@ -21,6 +21,16 @@ bar_voice_mocks = [
         "voiceName": "Autumn Leaves A 2 second"
     },
     {
+        "barName": "Autumn Leaves B 1",
+        "positionIndex": 0,
+        "voiceName": "Autumn Leaves B 1 first"
+    },
+    {
+        "barName": "Autumn Leaves B 1",
+        "positionIndex": 1,
+        "voiceName": "Autumn Leaves B 1 second"
+    },
+    {
         "barName": "Autumn Leaves B 2",
         "positionIndex": 0,
         "voiceName": "Autumn Leaves B 2 first"
@@ -30,18 +40,6 @@ bar_voice_mocks = [
         "positionIndex": 1,
         "voiceName": "Autumn Leaves B 2 second"
     },
-    {
-        "barName": "Autumn Leaves B 2",
-        "positionIndex": 0,
-        "voiceName": "Autumn Leaves B 2 first"
-    },
-    {
-        "barName": "Autumn Leaves B 2",
-        "positionIndex": 1,
-        "voiceName": "Autumn Leaves B 2 second"
-    },
-
-
     {
         "barName": "Afro Blue A 1",
         "positionIndex": 0,

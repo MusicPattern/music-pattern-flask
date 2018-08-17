@@ -47,7 +47,7 @@ from utils.mock import set_from_mock
 def do_sandbox():
 
     #USER
-    users_by_name = {}
+    users_by_email = {}
     for (user_index, user_mock) in enumerate(user_mocks):
         query = User.query.filter_by(email=user_mock['email'])
         if query.count() == 0:
@@ -67,7 +67,7 @@ def do_sandbox():
                 pprint(vars(role))
         else:
             user = query.first()
-        users[user.name] = users
+        users_by_email[user.email] = user
 
     #SAMPLE
     samples_by_name = {}
@@ -194,7 +194,7 @@ def do_sandbox():
     #MELODY
     melodies_by_name = {}
     for melody_mock in melody_mocks:
-        query = Melody.query.filter_by(pattern=melody_mock['pattern'])
+        query = Melody.query.filter_by(name=melody_mock['name'])
         if query.count() == 0:
             melody = Melody(from_dict=melody_mock)
             Wrapper.check_and_save(melody)
@@ -207,7 +207,7 @@ def do_sandbox():
     #RHYTHM
     rhythms_by_name = {}
     for rhythm_mock in rhythm_mocks:
-        query = Rhythm.query.filter_by(pattern=rhythm_mock['pattern'])
+        query = Rhythm.query.filter_by(name=rhythm_mock['name'])
         if query.count() == 0:
             rhythm = Rhythm(from_dict=rhythm_mock)
             Wrapper.check_and_save(rhythm)
@@ -223,7 +223,7 @@ def do_sandbox():
         query = Score.query.filter_by(name=score_mock['name'])
         if query.count() == 0:
             score = Score(from_dict=score_mock)
-            user = users_by_name[score_mock['userName']]
+            user = users_by_email[score_mock['userEmail']]
             score.user = user
             Wrapper.check_and_save(score)
             print("CREATED score")

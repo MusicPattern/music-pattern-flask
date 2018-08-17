@@ -2,12 +2,12 @@
 staff_mocks = [
     {
         "clef": "treble",
-        "name": "Autum Leaves A",
+        "name": "Autumn Leaves A",
         "timeSignature": "4/4"
     },
     {
         "clef": "treble",
-        "name": "Autum Leaves B",
+        "name": "Autumn Leaves B",
         "timeSignature": "4/4"
     },
     {

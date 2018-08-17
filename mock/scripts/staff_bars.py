@@ -2,23 +2,23 @@
 staff_bar_mocks = [
     {
         "positionIndex": 0,
-        "staffName": "Autum Leaves A",
-        "barName": "Autum Leaves A 1"
+        "staffName": "Autumn Leaves A",
+        "barName": "Autumn Leaves A 1"
     },
     {
         "positionIndex": 1,
-        "staffName": "Autum Leaves A",
-        "barName": "Autum Leaves A 2"
+        "staffName": "Autumn Leaves A",
+        "barName": "Autumn Leaves A 2"
     },
     {
         "positionIndex": 0,
-        "staffName": "Autum Leaves B",
-        "barName": "Autum Leaves B 1"
+        "staffName": "Autumn Leaves B",
+        "barName": "Autumn Leaves B 1"
     },
     {
         "positionIndex": 1,
-        "staffName": "Autum Leaves B",
-        "barName": "Autum Leaves B 2"
+        "staffName": "Autumn Leaves B",
+        "barName": "Autumn Leaves B 2"
     },
     {
         "positionIndex": 0,
