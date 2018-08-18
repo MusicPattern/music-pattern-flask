@@ -9,5 +9,5 @@ class Melody(Wrapper,
              Model):
 
     name = Column(String(30))
-    
-    pattern = Column(String(30))
+
+    intervals = Column(String(30))

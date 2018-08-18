@@ -1,22 +1,22 @@
-""" bar voice """
+""" staff voice """
 from sqlalchemy import BigInteger, Column, ForeignKey
 from sqlalchemy.orm import backref, relationship
 
 from models.utils import Model, Wrapper
 
 
-class BarVoice(Wrapper,
-               Model):
+class StaffVoice(Wrapper,
+                 Model):
 
     positionIndex = Column(BigInteger)
 
-    barId = Column(BigInteger,
-                   ForeignKey('bar.id'),
-                   primary_key=True)
+    staffId = Column(BigInteger,
+                     ForeignKey('staff.id'),
+                     primary_key=True)
 
-    bar = relationship('Bar',
-                       foreign_keys=[barId],
-                       backref=backref("barVoices"))
+    staff = relationship('Staff',
+                         foreign_keys=[staffId],
+                         backref=backref("staffVoices"))
 
     voiceId = Column(BigInteger,
                      ForeignKey('voice.id'),
@@ -24,4 +24,4 @@ class BarVoice(Wrapper,
 
     voice = relationship('Voice',
                          foreign_keys=[voiceId],
-                         backref=backref("barVoices"))
+                         backref=backref("staffVoices"))

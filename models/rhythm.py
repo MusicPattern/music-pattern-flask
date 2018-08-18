@@ -9,5 +9,5 @@ class Rhythm(Wrapper,
              Model):
 
     name = Column(String(30))
-    
-    pattern = Column(String(30))
+
+    durations = Column(String(30))

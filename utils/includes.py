@@ -21,7 +21,6 @@ HARMONY_INCLUDES = [
 SCORE_INCLUDES = [
     {
         "key": "scoreInstruments",
-        #"resolve": lambda score_instrument, filters: score_instrument['instrument'],
         "includes": [
             {
                 "key": "instrument",
@@ -39,31 +38,30 @@ SCORE_INCLUDES = [
     },
     {
         "key": "scoreStaves",
-        #"resolve": lambda score_staff, filters: score_staff['staff'],
         "includes": [
             {
                 "key": "staff",
                 "includes": [
                     {
-                        "key": "staffBars",
-                        #"resolve": lambda staff_bar, filters: staff_bar['bar'],
+                        "key": "staffVoices",
                         "includes": [
                             {
-                                "key": "bar",
+                                "key": "voice",
                                 "includes": [
                                     {
-                                        "key": "barVoices",
-                                        #"resolve": lambda bar_voice, filters: bar_voice['voice'],
+                                        "key": "voicePatterns",
                                         "includes": [
                                             {
-                                                "key": "voice",
+                                                "key": "pattern",
                                                 "includes": [
                                                     "melody",
                                                     "rhythm"
                                                 ]
                                             }
                                         ]
+
                                     }
+
                                 ]
                             }
                         ]

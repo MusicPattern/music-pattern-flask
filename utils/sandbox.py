@@ -3,29 +3,28 @@
 # -*- coding: utf-8 -*-
 from pprint import pprint
 
-from mock.scripts import bar_mocks,\
-                         bar_voice_mocks,\
-                         harmony_mocks,\
+from mock.scripts import harmony_mocks,\
                          instrument_mocks,\
                          melody_mocks,\
+                         pattern_mocks,\
                          sample_mocks,\
                          score_mocks,\
                          score_instrument_mocks,\
                          score_staff_mocks,\
                          staff_mocks,\
-                         staff_bar_mocks,\
+                         staff_voice_mocks,\
                          sound_mocks,\
                          rhythm_mocks,\
                          user_mocks,\
-                         voice_mocks
+                         voice_mocks,\
+                         voice_pattern_mocks
 from models.utils import Wrapper
-from models import Bar,\
-                   BarVoice,\
-                   Harmony,\
+from models import Harmony,\
                    Instrument,\
                    Sound,\
                    Melody,\
                    Note,\
+                   Pattern,\
                    Pitch,\
                    Rhythm,\
                    Role,\
@@ -37,9 +36,10 @@ from models import Bar,\
                    ScoreStaff,\
                    Sound,\
                    Staff,\
-                   StaffBar,\
+                   StaffVoice,\
                    User,\
-                   Voice
+                   Voice,\
+                   VoicePattern
 
 from utils.mock import set_from_mock
 
@@ -217,6 +217,27 @@ def do_sandbox():
             rhythm = query.first()
         rhythms_by_name[rhythm.name] = rhythm
 
+    #PATTERN
+    patterns_by_name = {}
+    for pattern_mock in pattern_mocks:
+        melody = melodies_by_name[pattern_mock['melodyName']]
+        rhythm = rhythms_by_name[pattern_mock['rhythmName']]
+        query = Pattern.query.filter_by(
+            melodyId=melody.id,
+            rhythmId=rhythm.id
+        )
+        if query.count() == 0:
+            pattern = Pattern(from_dict=pattern_mock)
+            pattern.melody = melody
+            pattern.rhythm = rhythm
+            Wrapper.check_and_save(pattern)
+            print("CREATED pattern")
+            pprint(vars(pattern))
+        else:
+            pattern = query.first()
+        patterns_by_name[pattern.name] = pattern
+
+
     #SCORE
     scores_by_name = {}
     for score_mock in score_mocks:
@@ -281,49 +302,12 @@ def do_sandbox():
             print("CREATED score_instrument")
             pprint(vars(score_instrument))
 
-    #BAR
-    bars_by_name = {}
-    for bar_mock in bar_mocks:
-        query = Bar.query.filter_by(name=bar_mock['name'])
-        if query.count() == 0:
-            bar = Bar(from_dict=bar_mock)
-            Wrapper.check_and_save(bar)
-            print("CREATED bar")
-            pprint(vars(bar))
-        else:
-            bar = query.first()
-        bars_by_name[bar.name] = bar
-
-    #STAFF BAR
-    for staff_bar_mock in staff_bar_mocks:
-        staff = staves_by_name[staff_bar_mock['staffName']]
-        bar = bars_by_name[staff_bar_mock['barName']]
-        query = StaffBar.query.filter_by(
-            positionIndex=staff_bar_mock['positionIndex'],
-            staffId=staff.id,
-            barId=bar.id
-        )
-        if query.count() == 0:
-            staff_bar = StaffBar(from_dict=staff_bar_mock)
-            staff_bar.staff = staff
-            staff_bar.bar = bar
-            Wrapper.check_and_save(staff_bar)
-            print("CREATED staff_bar")
-            pprint(vars(staff_bar))
-
     #VOICE
     voices_by_name = {}
     for voice_mock in voice_mocks:
-        melody = melodies_by_name[voice_mock['melodyName']]
-        rhythm = rhythms_by_name[voice_mock['rhythmName']]
-        query = Voice.query.filter_by(
-            melodyId=melody.id,
-            rhythmId=rhythm.id
-        )
+        query = Voice.query.filter_by(name=voice_mock['name'])
         if query.count() == 0:
             voice = Voice(from_dict=voice_mock)
-            voice.melody = melody
-            voice.rhythm = rhythm
             Wrapper.check_and_save(voice)
             print("CREATED voice")
             pprint(vars(voice))
@@ -331,19 +315,35 @@ def do_sandbox():
             voice = query.first()
         voices_by_name[voice.name] = voice
 
+    #VOICE PATTERNS
+    for voice_pattern_mock in voice_pattern_mocks:
+        voice = voices_by_name[voice_pattern_mock['voiceName']]
+        pattern = patterns_by_name[voice_pattern_mock['patternName']]
+        query = VoicePattern.query.filter_by(
+            voiceId=voice.id,
+            patternId=pattern.id
+        )
+        if query.count() == 0:
+            voice_pattern = VoicePattern(from_dict=voice_pattern_mock)
+            voice_pattern.voice = voice
+            voice_pattern.pattern = pattern
+            Wrapper.check_and_save(voice_pattern)
+            print("CREATED voice_pattern")
+            pprint(vars(voice_pattern))
 
-    #BAR VOICE
-    for bar_voice_mock in bar_voice_mocks:
-        bar = bars_by_name[bar_voice_mock['barName']]
-        voice = voices_by_name[bar_voice_mock['voiceName']]
-        query = BarVoice.query.filter_by(
-            barId=bar.id,
+
+    #STAFF VOICE
+    for staff_voice_mock in staff_voice_mocks:
+        staff = staves_by_name[staff_voice_mock['staffName']]
+        voice = voices_by_name[staff_voice_mock['voiceName']]
+        query = StaffVoice.query.filter_by(
+            staffId=staff.id,
             voiceId=voice.id
         )
         if query.count() == 0:
-            bar_voice = BarVoice(from_dict=bar_voice_mock)
-            bar_voice.bar = bar
-            bar_voice.voice = voice
-            Wrapper.check_and_save(bar_voice)
-            print("CREATED bar_voice")
-            pprint(vars(bar_voice))
+            staff_voice = StaffVoice(from_dict=staff_voice_mock)
+            staff_voice.staff = staff
+            staff_voice.voice = voice
+            Wrapper.check_and_save(staff_voice)
+            print("CREATED staff_voice")
+            pprint(vars(staff_voice))
