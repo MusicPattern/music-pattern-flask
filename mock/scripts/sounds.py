@@ -2,14 +2,14 @@
 sound_mocks = [
     {
         "instrumentName": "Drum",
-        "pitch": 0,
-        "pitchIndex": 0,
+        "pitch": 48,
+        "pitchIndex": 48,
         "sampleName": "Bass Drum 2"
     },
     {
         "instrumentName": "Drum",
-        "pitch": 1,
-        "pitchIndex": 1,
+        "pitch": 49,
+        "pitchIndex": 49,
         "sampleName": "E-Mu-Proteus-FX-Wacky-Snare"
     }
 ]

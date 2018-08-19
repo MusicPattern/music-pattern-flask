@@ -13,10 +13,7 @@ voice_mocks = [
         "name": "Autumn Leaves A Bass",
     },
     {
-        "name": "Autumn Leaves A Piano 1",
-    },
-    {
-        "name": "Autumn Leaves A Piano 2",
+        "name": "Autumn Leaves A Piano",
     },
     {
         "name": "Autumn Leaves B Drum Kick",
@@ -31,10 +28,7 @@ voice_mocks = [
         "name": "Autumn Leaves B Bass",
     },
     {
-        "name": "Autumn Leaves B Piano 1",
-    },
-    {
-        "name": "Autumn Leaves B Piano 2",
+        "name": "Autumn Leaves B Piano",
     },
     {
         "name": "Afro Blue A Drum Kick",
@@ -49,10 +43,7 @@ voice_mocks = [
         "name": "Afro Blue A Bass",
     },
     {
-        "name": "Afro Blue A Piano 1",
-    },
-    {
-        "name": "Afro Blue A Piano 2",
+        "name": "Afro Blue A Piano",
     },
     {
         "name": "Afro Blue B Drum Kick",
@@ -67,9 +58,6 @@ voice_mocks = [
         "name": "Afro Blue B Bass",
     },
     {
-        "name": "Afro Blue B Piano 1",
-    },
-    {
-        "name": "Afro Blue B Piano 2",
+        "name": "Afro Blue B Piano",
     }
 ]

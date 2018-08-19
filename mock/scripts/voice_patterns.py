@@ -41,13 +41,13 @@ voice_pattern_mocks = [
         "positionIndex": 0,
         "rootPitch": 48,
         "rootTime": 0,
-        "voiceName": "Autumn Leaves A Piano 1",
+        "voiceName": "Autumn Leaves A Piano",
     },
     {
         "patternName": "-2,-1,1 | 1/4,1/4,1/2",
         "probabilities": "1,1,1,1",
         "positionIndex": 1,
-        "voiceName": "Autumn Leaves A Piano 2",
+        "voiceName": "Autumn Leaves A Piano",
     },
 
     # AUTUMN LEAVES B
@@ -91,13 +91,13 @@ voice_pattern_mocks = [
         "positionIndex": 0,
         "rootPitch": 48,
         "rootTime": 0,
-        "voiceName": "Autumn Leaves B Piano 1",
+        "voiceName": "Autumn Leaves B Piano",
     },
     {
         "patternName": "-2,-1,1 | 1/4,1/4,1/2",
         "probabilities": "1,1,1,1",
         "positionIndex": 1,
-        "voiceName": "Autumn Leaves B Piano 2",
+        "voiceName": "Autumn Leaves B Piano",
     },
 
 
@@ -141,13 +141,13 @@ voice_pattern_mocks = [
         "positionIndex": 0,
         "rootPitch": 48,
         "rootTime": 0,
-        "voiceName": "Afro Blue A Piano 1",
+        "voiceName": "Afro Blue A Piano",
     },
     {
         "patternName": "-2,-1,1 | 1/4,1/4,1/2",
         "probabilities": "1,1,1,1",
         "positionIndex": 1,
-        "voiceName": "Afro Blue A Piano 2",
+        "voiceName": "Afro Blue A Piano",
     },
 
     # AFRO BLUE B
@@ -190,12 +190,12 @@ voice_pattern_mocks = [
         "positionIndex": 0,
         "rootPitch": 48,
         "rootTime": 0,
-        "voiceName": "Afro Blue B Piano 1",
+        "voiceName": "Afro Blue B Piano",
     },
     {
         "patternName": "-2,-1,1 | 1/4,1/4,1/2",
         "probabilities": "1,1,1,1",
         "positionIndex": 1,
-        "voiceName": "Afro Blue B Piano 2",
+        "voiceName": "Afro Blue B Piano",
     }
 ]

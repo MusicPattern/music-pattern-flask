@@ -23,12 +23,7 @@ staff_voice_mocks = [
     {
         "staffName": "Autumn Leaves A",
         "positionIndex": 0,
-        "voiceName": "Autumn Leaves A Piano 1"
-    },
-    {
-        "staffName": "Autumn Leaves A",
-        "positionIndex": 1,
-        "voiceName": "Autumn Leaves A Piano 2"
+        "voiceName": "Autumn Leaves A Piano"
     },
     {
         "staffName": "Autumn Leaves B",
@@ -53,16 +48,8 @@ staff_voice_mocks = [
     {
         "staffName": "Autumn Leaves B",
         "positionIndex": 0,
-        "voiceName": "Autumn Leaves B Piano 1"
+        "voiceName": "Autumn Leaves B Piano"
     },
-    {
-        "staffName": "Autumn Leaves B",
-        "positionIndex": 1,
-        "voiceName": "Autumn Leaves B Piano 2"
-    },
-
-
-
 
 
     {
@@ -88,12 +75,7 @@ staff_voice_mocks = [
     {
         "staffName": "Afro Blue A",
         "positionIndex": 0,
-        "voiceName": "Afro Blue A Piano 1"
-    },
-    {
-        "staffName": "Afro Blue A",
-        "positionIndex": 1,
-        "voiceName": "Afro Blue A Piano 2"
+        "voiceName": "Afro Blue A Piano"
     },
     {
         "staffName": "Afro Blue B",
@@ -118,11 +100,6 @@ staff_voice_mocks = [
     {
         "staffName": "Afro Blue B",
         "positionIndex": 0,
-        "voiceName": "Afro Blue B Piano 1"
-    },
-    {
-        "staffName": "Afro Blue B",
-        "positionIndex": 1,
-        "voiceName": "Afro Blue B Piano 2"
+        "voiceName": "Afro Blue B Piano"
     }
 ]
