@@ -175,17 +175,18 @@ def do_sandbox():
     #SOUND
     for sound_mock in sound_mocks:
         instrument = instruments_by_name[sound_mock['instrumentName']]
-        pitch = pitches[sound_mock['pitchIndex']]
+        #pitch = pitches[sound_mock['pitchIndex']]
         sample = samples_by_name[sound_mock['sampleName']]
         query = Sound.query.filter_by(
             instrumentId=instrument.id,
-            pitchId=pitch.id,
+            pitch=sound_mock['pitch'],
+            #pitchId=pitch.id,
             sampleId=sample.id
         )
         if query.count() == 0:
             sound = Sound(from_dict=sound_mock)
             sound.instrument = instrument
-            sound.pitch = pitch
+            #sound.pitch = pitch
             sound.sample = sample
             Wrapper.check_and_save(sound)
             print("CREATED sound")
