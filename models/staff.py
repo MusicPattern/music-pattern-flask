@@ -13,4 +13,6 @@ class Staff(Wrapper,
 
     clef = Column(String(30))
 
+    rootPitch = Column(BigInteger)
+
     timeSignature = Column(String(30))

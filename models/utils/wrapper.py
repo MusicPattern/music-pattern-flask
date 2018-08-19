@@ -75,7 +75,7 @@ class Wrapper():
             else:
                 result[key] = serialize(value, **options)
         # add the model name
-        result['modelName'] = self.__class__.__name__
+        # result['modelName'] = self.__class__.__name__
         if options\
            and 'includes' in options\
            and options['includes']:
