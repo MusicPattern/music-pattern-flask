@@ -11,7 +11,7 @@ from models.utils import Model, Wrapper
 class Pattern(Wrapper,
               Model):
 
-    name = Column(String())
+    name = Column(String(1000))
 
     melodyId = Column(BigInteger,
                       ForeignKey("melody.id"),

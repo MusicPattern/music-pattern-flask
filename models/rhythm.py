@@ -8,6 +8,6 @@ from models.utils import Model, Wrapper
 class Rhythm(Wrapper,
              Model):
 
-    name = Column(String())
+    name = Column(String(1000))
 
-    durations = Column(String())
+    durations = Column(String(1000))

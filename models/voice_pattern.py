@@ -1,5 +1,5 @@
 """ voice pattern """
-from sqlalchemy import BigInteger, Column, ForeignKey
+from sqlalchemy import BigInteger, Column, ForeignKey, String
 from sqlalchemy.orm import backref, relationship
 
 from models.utils import Model, Wrapper
@@ -9,6 +9,12 @@ class VoicePattern(Wrapper,
                    Model):
 
     positionIndex = Column(BigInteger)
+
+    probabilities = Column(String())
+
+    rootPitch = Column(BigInteger)
+
+    rootTime = Column(BigInteger)
 
     voiceId = Column(BigInteger,
                      ForeignKey('voice.id'),
