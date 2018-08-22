@@ -16,16 +16,6 @@ class Sound(Wrapper,
                               foreign_keys=[instrumentId],
                               backref=backref("sounds"))
 
-    """
-    pitchId = Column(BigInteger,
-                     ForeignKey('pitch.id'),
-                     primary_key=True)
-
-    pitch = relationship('Pitch',
-                         foreign_keys=[pitchId],
-                         backref=backref("sounds"))
-    """
-
     pitch = Column(BigInteger)
 
     sampleId = Column(BigInteger,

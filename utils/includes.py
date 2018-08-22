@@ -18,6 +18,28 @@ HARMONY_INCLUDES = [
     }
 ]
 
+STAFF_VOICE_INCLUDES = [
+    {
+        "key": "voice",
+        "includes": [
+            {
+                "key": "voicePatterns",
+                "includes": [
+                    {
+                        "key": "pattern",
+                        "includes": [
+                            "melody",
+                            "rhythm"
+                        ]
+                    }
+                ]
+
+            }
+
+        ]
+    }
+]
+
 SCORE_INCLUDES = [
     {
         "key": "scoreInstruments",
@@ -44,27 +66,7 @@ SCORE_INCLUDES = [
                 "includes": [
                     {
                         "key": "staffVoices",
-                        "includes": [
-                            {
-                                "key": "voice",
-                                "includes": [
-                                    {
-                                        "key": "voicePatterns",
-                                        "includes": [
-                                            {
-                                                "key": "pattern",
-                                                "includes": [
-                                                    "melody",
-                                                    "rhythm"
-                                                ]
-                                            }
-                                        ]
-
-                                    }
-
-                                ]
-                            }
-                        ]
+                        "includes": STAFF_VOICE_INCLUDES
                     }
                 ]
             }

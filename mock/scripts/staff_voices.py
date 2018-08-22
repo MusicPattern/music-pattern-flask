@@ -1,53 +1,62 @@
 """ staff voices """
 staff_voice_mocks = [
     {
-        "staffName": "Autumn Leaves A",
         "positionIndex": 0,
+        "staffName": "Autumn Leaves A",
         "voiceName": "Autumn Leaves A Drum Kick"
     },
     {
+        "isActive": False,
+        "positionIndex": 1,
         "staffName": "Autumn Leaves A",
-        "positionIndex": 0,
         "voiceName": "Autumn Leaves A Drum Snare"
     },
     {
+        "isActive": False,
+        "positionIndex": 2,
         "staffName": "Autumn Leaves A",
-        "positionIndex": 0,
         "voiceName": "Autumn Leaves A Drum Hithat"
     },
     {
+        "isActive": False,
+        "positionIndex": 3,
         "staffName": "Autumn Leaves A",
-        "positionIndex": 0,
         "voiceName": "Autumn Leaves A Bass"
     },
     {
+        "isActive": False,
+        "positionIndex": 4,
         "staffName": "Autumn Leaves A",
-        "positionIndex": 0,
         "voiceName": "Autumn Leaves A Piano"
     },
     {
-        "staffName": "Autumn Leaves B",
+        "isActive": False,
         "positionIndex": 0,
+        "staffName": "Autumn Leaves B",
         "voiceName": "Autumn Leaves B Drum Kick"
     },
     {
+        "isActive": False,
+        "positionIndex": 1,
         "staffName": "Autumn Leaves B",
-        "positionIndex": 0,
         "voiceName": "Autumn Leaves B Drum Snare"
     },
     {
+        "isActive": False,
+        "positionIndex": 2,
         "staffName": "Autumn Leaves B",
-        "positionIndex": 0,
         "voiceName": "Autumn Leaves B Drum Hithat"
     },
     {
+        "isActive": False,
+        "positionIndex": 3,
         "staffName": "Autumn Leaves B",
-        "positionIndex": 0,
         "voiceName": "Autumn Leaves B Bass"
     },
     {
+        "isActive": False,
+        "positionIndex": 4,
         "staffName": "Autumn Leaves B",
-        "positionIndex": 0,
         "voiceName": "Autumn Leaves B Piano"
     },
 
@@ -59,22 +68,22 @@ staff_voice_mocks = [
     },
     {
         "staffName": "Afro Blue A",
-        "positionIndex": 0,
+        "positionIndex": 1,
         "voiceName": "Afro Blue A Drum Snare"
     },
     {
         "staffName": "Afro Blue A",
-        "positionIndex": 0,
+        "positionIndex": 2,
         "voiceName": "Afro Blue A Drum Hithat"
     },
     {
         "staffName": "Afro Blue A",
-        "positionIndex": 0,
+        "positionIndex": 3,
         "voiceName": "Afro Blue A Bass"
     },
     {
         "staffName": "Afro Blue A",
-        "positionIndex": 0,
+        "positionIndex": 4,
         "voiceName": "Afro Blue A Piano"
     },
     {
@@ -84,22 +93,22 @@ staff_voice_mocks = [
     },
     {
         "staffName": "Afro Blue B",
-        "positionIndex": 0,
+        "positionIndex": 1,
         "voiceName": "Afro Blue B Drum Snare"
     },
     {
         "staffName": "Afro Blue B",
-        "positionIndex": 0,
+        "positionIndex": 2,
         "voiceName": "Afro Blue B Drum Hithat"
     },
     {
         "staffName": "Afro Blue B",
-        "positionIndex": 0,
+        "positionIndex": 3,
         "voiceName": "Afro Blue B Bass"
     },
     {
         "staffName": "Afro Blue B",
-        "positionIndex": 0,
+        "positionIndex": 4,
         "voiceName": "Afro Blue B Piano"
     }
 ]

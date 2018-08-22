@@ -1,5 +1,5 @@
 """ staff voice """
-from sqlalchemy import BigInteger, Column, ForeignKey
+from sqlalchemy import BigInteger, Boolean, Column, ForeignKey
 from sqlalchemy.orm import backref, relationship
 
 from models.utils import Model, Wrapper
@@ -7,6 +7,10 @@ from models.utils import Model, Wrapper
 
 class StaffVoice(Wrapper,
                  Model):
+
+    isActive = Column(Boolean,
+                      nullable=False,
+                      default=True)
 
     positionIndex = Column(BigInteger)
 
