@@ -1,12 +1,15 @@
 """ instrument """
 instrument_mocks = [
     {
-        "name": "Drum"
+        "name": "Drum",
+        "toneName": "Sampler"
     },
     {
-        "name": "Bass"
+        "name": "Bass",
+        "toneName": "DuoSynth"
     },
     {
-        "name": "Piano"
+        "name": "Piano",
+        "toneName": "Synth"
     }
 ]

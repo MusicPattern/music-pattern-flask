@@ -124,24 +124,6 @@ def do_sandbox():
                 note = query.first()
             notes.append(note)
 
-        #PITCH
-        note_index = 0
-        pitches = []
-        for index in range(harmony.pitchesMax):
-            query = Pitch.query.filter_by(index=index)
-            if query.count() == 0:
-                pitch = Pitch(from_dict={ "index": index })
-                pitch.note = notes[note_index]
-                Wrapper.check_and_save(pitch)
-                print("CREATED pitch")
-                pprint(vars(pitch))
-            else:
-                pitch = query.first()
-            pitches.append(pitch)
-            note_index += 1
-            if note_index == harmony.notesMax:
-                note_index = 0
-
         #SCALE
         #for scaleSize in range(1, harmony.scaleMaxSize):
         for scaleSize in []:
@@ -175,18 +157,15 @@ def do_sandbox():
     #SOUND
     for sound_mock in sound_mocks:
         instrument = instruments_by_name[sound_mock['instrumentName']]
-        #pitch = pitches[sound_mock['pitchIndex']]
         sample = samples_by_name[sound_mock['sampleName']]
         query = Sound.query.filter_by(
             instrumentId=instrument.id,
             pitch=sound_mock['pitch'],
-            #pitchId=pitch.id,
             sampleId=sample.id
         )
         if query.count() == 0:
             sound = Sound(from_dict=sound_mock)
             sound.instrument = instrument
-            #sound.pitch = pitch
             sound.sample = sample
             Wrapper.check_and_save(sound)
             print("CREATED sound")

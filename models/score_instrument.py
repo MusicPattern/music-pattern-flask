@@ -19,9 +19,9 @@ class ScoreInstrument(Wrapper,
                          backref=backref("scoreInstruments"))
 
     instrumentId = Column(BigInteger,
-                   ForeignKey('instrument.id'),
-                   primary_key=True)
+                          ForeignKey('instrument.id'),
+                          primary_key=True)
 
     instrument = relationship('Instrument',
-                       foreign_keys=[instrumentId],
-                       backref=backref("scoreInstruments"))
+                              foreign_keys=[instrumentId],
+                              backref=backref("scoreInstruments"))

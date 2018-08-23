@@ -12,9 +12,9 @@ class VoicePattern(Wrapper,
 
     probabilities = Column(String())
 
-    rootPitch = Column(BigInteger)
+    rootInterval = Column(BigInteger)
 
-    rootTime = Column(BigInteger)
+    rootDuration = Column(BigInteger)
 
     voiceId = Column(BigInteger,
                      ForeignKey('voice.id'),
