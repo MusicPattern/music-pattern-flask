@@ -20,7 +20,7 @@ voice_pattern_mocks = [
         "voiceName": "Autumn Leaves A Drum Snare",
     },
     {
-        "patternName": "0,0,0,0 | 1/2,1/2,1/2,1/2,1/2,1/2,1/2,1/2",
+        "patternName": "0,0,0,0,0,0,0,0 | 1/2,1/2,1/2,1/2,1/2,1/2,1/2,1/2",
         "probabilities": "1,1,1,1,1,1,1,1",
         "positionIndex": 0,
         "rootDuration": 0,
@@ -69,7 +69,7 @@ voice_pattern_mocks = [
         "voiceName": "Autumn Leaves B Drum Snare",
     },
     {
-        "patternName": "0,0,0,0 | 1/2,1/2,1/2,1/2,1/2,1/2,1/2,1/2",
+        "patternName": "0,0,0,0,0,0,0,0 | 1/2,1/2,1/2,1/2,1/2,1/2,1/2,1/2",
         "probabilities": "0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25",
         "positionIndex": 0,
         "rootDuration": 0,
@@ -120,7 +120,7 @@ voice_pattern_mocks = [
         "voiceName": "Afro Blue A Drum Snare",
     },
     {
-        "patternName": "0,0,0,0 | 1/2,1/2,1/2,1/2,1/2,1/2,1/2,1/2",
+        "patternName": "0,0,0,0,0,0,0,0 | 1/2,1/2,1/2,1/2,1/2,1/2,1/2,1/2",
         "probabilities": "1,1,1,1,1,1,1,1",
         "positionIndex": 0,
         "rootDuration": 0,
@@ -168,7 +168,7 @@ voice_pattern_mocks = [
         "voiceName": "Afro Blue B Drum Snare",
     },
     {
-        "patternName": "0,0,0,0 | 1/2,1/2,1/2,1/2,1/2,1/2,1/2,1/2",
+        "patternName": "0,0,0,0,0,0,0,0 | 1/2,1/2,1/2,1/2,1/2,1/2,1/2,1/2",
         "probabilities": "0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25",
         "positionIndex": 0,
         "rootDuration": 0,
