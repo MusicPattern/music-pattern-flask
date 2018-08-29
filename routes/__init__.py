@@ -1,5 +1,6 @@
 """ routes """
 import routes.harmonies
+import routes.patterns
 import routes.scores
 import routes.staff_voices
 import routes.storage

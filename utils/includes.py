@@ -18,6 +18,11 @@ HARMONY_INCLUDES = [
     }
 ]
 
+PATTERN_INCLUDES = [
+    "melody",
+    "rhythm"
+]
+
 STAFF_VOICE_INCLUDES = [
     {
         "key": "voice",
@@ -27,10 +32,7 @@ STAFF_VOICE_INCLUDES = [
                 "includes": [
                     {
                         "key": "pattern",
-                        "includes": [
-                            "melody",
-                            "rhythm"
-                        ]
+                        "includes": PATTERN_INCLUDES
                     }
                 ]
 
